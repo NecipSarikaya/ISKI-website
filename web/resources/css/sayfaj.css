@@ -1,0 +1,65 @@
+           div{
+        border: 2px solid black;
+	width: 24%;
+        height: 60%;
+	position:absolute;
+	left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+	background-color:#ffffff;
+	border-radius: 50px;
+        border-color: #73AD21;
+        -webkit-animation: fadein 1.5s;
+        }
+        
+        @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+}          
+
+
+table{
+        border-collapse: collapse;
+        margin-top: 8%;
+        background-color: #bfbfbf;
+        border:1px solid #bfbfbf;
+        height: 15%;
+        }
+	
+            body{
+	background-color:grey;
+	}
+        
+            .bol {
+        width: 20%;
+        height: 20%;
+        border: 1px solid #bfbfbf;
+        }
+        
+            .btn {
+        padding: 2% 5% 2% 5%;
+        font-size: 16px;
+        border:1px solid #73AD21;
+        border-radius: 5px;
+        transition-duration: 0.4s;
+        background-color: #e6e6e6;
+        margin-top: 10%;
+        margin-left: 30%;
+        }
+        
+        .btn:hover {
+        background-color: #bfbfbf;  
+        color: white;
+        }
+        
+        .for{
+            margin-top:8%;
+            margin-left:10%;
+        }
+        
+        .tx{
+            border: 1px solid #bfbfbf;
+            border-radius: 3px;
+            width: 42%;
+            padding: 2% 2% 2% 5%;
+        }

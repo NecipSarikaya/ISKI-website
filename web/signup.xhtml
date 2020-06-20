@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>İski Yönetim Paneli</title>
+        <h:outputStylesheet library = "css" name = "style.css"/> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></link>
+        
+    </h:head>
+    <h:body>
+         <div class="center">
+     <div class="centerbas">
+         <img src="resources/img/iski.ico"/>
+         <h4>Hepimiz Birimiz İçin...</h4>
+     </div>
+	<h:form class="centerx" id="form">
+            <h:inputText value="#{user.nickname}" styleClass="text-input" pt:placeholder="Kullanıcı Adı" required="true" />
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+              <h:inputSecret value="#{user.pass}" styleClass="text-input" pt:placeholder="Şifre" required="true" />
+              <div class="passico">
+                  <i class="fa fa-key fa-lg fa-fw" aria-hidden="true"></i>
+              </div>
+              <h:inputText value="#{user.mail}" styleClass="text-input" pt:placeholder="Mail" required="true" />
+              <div class="mailco">
+                  <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+              </div>
+              <h:inputText value="#{user.name}" styleClass="text-input" pt:placeholder="Ad" required="true" />
+              <div class="adco">
+                  <i class="fa fa-venus-mars fa-lg fa-fw" aria-hidden="true"></i>
+              </div>
+              <h:inputText value="#{user.surname}" styleClass="text-input" pt:placeholder="Soyad" required="true" />
+              <div class="soyadco">
+                  <i class="fa fa-tree fa-lg fas-fw" aria-hidden="true"></i>
+              </div>
+              <h:commandButton value="Üye Ol" action="#{user.secici}" actionListener="#{user.uyeol}" ></h:commandButton>
+        </h:form>
+     </div>
+</h:body>
+</html>

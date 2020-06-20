@@ -1,0 +1,187 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+   xmlns:f = "http://java.sun.com/jsf/core"    
+   xmlns:h = "http://java.sun.com/jsf/html"
+   xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+   xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+   
+   <h:head>
+      <title>Borc sorgu</title>
+      <style type="text/css">
+           #arkaplan{
+                top: 0px;
+                left:0px;
+                background-image: url(pics/1.jpg);
+                background-repeat: no-repeat;
+		position:absolute;
+		background-size: 100% 100%;
+                height: 100%;
+                width: 100%;
+            }
+            @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+            #konum {
+                border-radius: 20px;
+                margin: auto;
+                padding:10px;
+		border:2px solid black;
+                background-color:white;
+		position:absolute;
+                top:30%;
+                left:23%;
+                -webkit-animation: fadein 1.5s;
+		}
+            #anasayfa{
+                top:0px;
+                left:0px;
+                border-top-left-radius: 18px; 
+                border:2px solid black;
+                position: relative;
+                height: 70px;
+                width: 10.5%;       
+            }
+            #tanim{
+                text-align: center;
+                position: relative;
+                border:2px solid black;
+                background-color: greenyellow;
+                border-top-right-radius: 18px;
+                width: 89%;
+                height: 70px;
+                top: -74px;
+                left:10.5%;
+            }
+            label {
+                float: left;
+                width: 10em;
+                margin-right: 0.5em;
+            }
+   
+      </style>
+      
+   </h:head>
+   
+   <h:body>
+       <div id="arkaplan">
+           <div id="konum">
+               <div id="anasayfa">
+                   <h:form>
+                   <h:commandLink action="#{aboneli.anasayfa()}">
+                    <h:graphicImage value="pics/7.png" />
+                    </h:commandLink>
+                     </h:form>
+               </div>
+               <div id="tanim">
+                   <h2>Abone Borç Sorgu Sonucu</h2>
+               </div>
+               
+               
+                   <h:form style="top:-80px; left:0px ; position:relative;"> 
+                       <p><strong>Ödeme yapmak isterseniz ödenmemiş fatura için ödeme şekli seçerek ödeme butonuna basarak ödeme işlemini gerçekleştirebilirsiniz</strong></p>
+                       <h:dataTable value = "#{aboneli.borc}" var = "c" border="2" >
+
+                       <h:column><f:facet name = "header">Abone Numarası</f:facet>
+                          #{c.subno}
+                       </h:column>
+
+                       <h:column><f:facet name = "header">Tarih </f:facet>
+
+                          #{c.date}
+                       </h:column>
+
+                       <h:column><f:facet name = "header">Fiyat</f:facet>
+
+                          #{c.price}
+                       </h:column>
+
+                       <h:column><f:facet name = "header">Ödenmiş fatura</f:facet>
+                           <h:selectBooleanCheckbox value="#{c.durum}" disabled="true"/> 
+                       </h:column>
+                           
+                           <h:column><f:facet name = "header">Neden</f:facet>
+                           #{c.neden}
+                       </h:column>
+                       
+                       <h:column><f:facet name = "header">Ödeme şekli</f:facet>
+                          
+                           <h:selectOneMenu value = "#{aboneli.asb}"> 
+                            <f:selectItem itemValue = "Nakit" itemLabel = "Nakit" /> 
+                            <f:selectItem itemValue = "Kredi" itemLabel = "Kredi Kartı" />
+                            </h:selectOneMenu>
+                          
+                       </h:column>
+                       
+                       <h:column><f:facet name = "header"> Ödeme</f:facet>
+                                             
+                           <h:commandButton value="Ödeme" action="#{aboneli.odeme()}">
+                           <f:param name="username" value="#{c.date}"/>
+                            <f:param name="ned" value="#{c.neden}"/>
+                           <f:param name="asb1" value="#{c.subno}"/>
+                           </h:commandButton>  
+                         
+                       </h:column>
+                               
+              
+                    </h:dataTable>
+                       </h:form>
+                        <h:form> 
+                            <h:dataTable value = "#{aboneli.ceza}" var = "s" border="2" >
+                       <h:column><f:facet name = "header">Abone Numarası</f:facet>
+                          #{s.subno}
+                       </h:column>
+
+                       <h:column><f:facet name = "header">Tarih </f:facet>
+
+                          #{s.date}
+                       </h:column>
+
+                       <h:column><f:facet name = "header">Fiyat</f:facet>
+
+                          #{s.price}
+                       </h:column>
+
+                       <h:column><f:facet name = "header">Ödenmiş fatura</f:facet>
+                           <h:selectBooleanCheckbox value="#{s.durum}" disabled="true"/> 
+                       </h:column>
+                           
+                           <h:column><f:facet name = "header">Neden</f:facet>
+                           #{s.neden}
+                       </h:column>
+                       
+                       <h:column><f:facet name = "header">Ödeme şekli</f:facet>
+                          
+                           <h:selectOneMenu value = "#{aboneli.asb}"> 
+                            <f:selectItem itemValue = "Nakit" itemLabel = "Nakit" /> 
+                            <f:selectItem itemValue = "Kredi" itemLabel = "Kredi Kartı" />
+                            </h:selectOneMenu>
+                          
+                       </h:column>
+                       
+                       <h:column><f:facet name = "header"> Ödeme</f:facet>
+                                             
+                           <h:commandButton value="Ödeme" action="#{aboneli.odeme()}">
+                           <f:param name="username" value="#{s.date}"/>
+                            <f:param name="ned" value="#{s.neden}"/>
+                           <f:param name="asb1" value="#{s.subno}"/>
+                           </h:commandButton>  
+                         
+                       </h:column>
+                             
+                    </h:dataTable>
+              </h:form> 
+              
+           </div>
+       </div>
+   </h:body>
+
+    
+    
+</html>
+
+
+     

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library = "css" name = "style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></link>
+    </h:head>
+    <h:body>
+        <div class="center" style="text-align: center">
+       <h:form>
+        <label for="makereqlb" style="color:black" >Abone Numarasını Girin</label>
+        <h:selectOneMenu value="#{query.subnoreq}">
+            <f:selectItems value="#{query.sublistValue}" var="c"
+   			itemLabel="#{c.subno}" itemValue="#{c.subno}" />
+   		</h:selectOneMenu>
+        <br></br>
+        <h:selectOneMenu value="#{query.penalty}">
+   	<f:selectItem itemValue="kacakuse" itemLabel="Kaçak kullanım (3000 TL)" />
+        <f:selectItem itemValue="kurcalama" itemLabel="Su saati kurcalama (1500 TL)" />
+        <f:selectItem itemValue="sozlesmeihlal" itemLabel="Sözleşmeye uymama (644 TL)" />
+        </h:selectOneMenu>
+        <br></br>
+        <h:commandButton value="Ceza Uygula" action="#{query.penaltypage}" actionListener="#{query.makepenalty}" ></h:commandButton>
+    </h:form>
+    <label for="lastname">#{query.hata}</label>
+        </div>
+    </h:body>
+</html>

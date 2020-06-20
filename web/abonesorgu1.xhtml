@@ -1,0 +1,142 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+   xmlns:f = "http://java.sun.com/jsf/core"    
+   xmlns:h = "http://java.sun.com/jsf/html"
+   xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+   
+   <h:head>
+      <title>Abone Sorgula</title>
+       <style type="text/css">
+           #arkaplan{
+                top:0px; left: 0px; right: 0px; bottom: 0px; 
+                background-image: url(pics/1.jpg);
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                width:100%;
+                height: 100%;
+                position:absolute;
+            }
+            @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+            #konum {
+                border-radius: 20px;
+                margin: auto;
+                width: 83%;
+		border:2px solid black;
+                background-color:white;
+		position:absolute;
+                top:25%;
+                left:12%;
+                padding: 15px;
+                -webkit-animation: fadein 1.5s;
+                text-align: center;
+            }
+            #anasayfa{
+                top:0px;
+                left:0px;
+                border-top-left-radius: 20px; 
+                border:2px solid black;
+                position: relative; 
+                height: 67px;
+                width: 9.5%;
+      
+            }
+            #tanim{
+                text-align: center;
+                position: relative;
+                border:2px solid black;
+                background-color: greenyellow;
+                border-top-right-radius: 20px;                
+                width: 90%;
+                top: -72px;
+                left:9.75%;
+            }
+            label {
+                float: left;
+                width: 10em;
+                margin-right: 0.5em;
+            }
+        </style>
+      
+      
+   </h:head>
+   
+   <h:body>
+       <div id="arkaplan">
+           <div id="konum">
+               <div id="anasayfa">
+                   <h:form>
+                   <h:commandLink action="#{aboneli.anasayfa()}">
+                    <h:graphicImage value="pics/7.png" />
+                    </h:commandLink>
+                       </h:form>
+               </div>
+               <div id="tanim">
+                   <h2>Abone Sorgu Sonucu</h2>
+               </div>
+               <div >
+                   
+                   <h:dataTable id="table" value = "#{aboneli.abone}" var = "c" border="2" style=" position:relative;top: -25px;left:5px;border-collapse:collapse; " >
+               <h:column><f:facet name = "header">Abonman Numarası</f:facet>
+                  #{c.subno}
+               </h:column>
+
+               <h:column><f:facet name = "header">Tc Kimlik No</f:facet>
+                  #{c.tc}
+               </h:column>
+
+               <h:column><f:facet name = "header">Ad</f:facet>
+                  #{c.name}
+               </h:column>
+
+               <h:column><f:facet name = "header">Soyad</f:facet>
+                  #{c.surname}
+               </h:column>
+
+                <h:column><f:facet name = "header">Adres</f:facet>
+                  #{c.adress}
+               </h:column>
+
+                 <h:column><f:facet name = "header">Telefon Numarası</f:facet>
+                  #{c.phone}
+               </h:column>
+
+              <h:column><f:facet name = "header">Mail</f:facet>
+                  #{c.mail}
+               </h:column>
+                       
+                  <h:column><f:facet name = "header">Abonelik başlangıcı</f:facet>
+                  #{c.date}
+                  </h:column>
+                <h:column><f:facet name = "header">Abonelik bitişi</f:facet>
+                  #{c.odate}
+                  </h:column>
+                       
+                  <h:column><f:facet name = "header">Abonelik bitişi</f:facet>
+                      <h:form>
+                      <h:commandButton value="Sil" action="#{aboneli.silme()}">
+                      <f:param name="asb1" value="#{c.subno}"/>
+                      </h:commandButton>
+                      </h:form>
+                      
+                  </h:column>
+                 
+                  
+                 </h:dataTable>
+                  
+               </div>
+               
+           </div>
+       </div>
+     
+   </h:body>
+
+    
+    
+</html>
+

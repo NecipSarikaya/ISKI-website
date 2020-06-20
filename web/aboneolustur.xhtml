@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Abone Oluşturma</title>
+        <style type="text/css">
+            #arkaplan{
+                top:0px; left: 0px; right: 0px; bottom: 0px; 
+                background-image: url(pics/3.jpg);
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                width:100%;
+                height: 100%;
+		position:absolute;
+            }
+            @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+            #konum {
+                border-radius: 20px;
+		border:2px solid black;
+                background-color:white;
+		position:absolute;
+                left: 50%;
+                top: 50%;
+                width: 33%;
+                padding: 6px;
+                -webkit-animation: fadein 1.5s;
+                transform: translate(-50%, -50%);
+            }
+            #anasayfa{
+                top:0px;
+                left:0px;
+                border-top-left-radius: 20px; 
+                border:2px solid black;
+                position: relative; 
+                height: 67px;
+                width: 20%;
+            }
+            #tanim{
+                position: relative;
+                border:2px solid black;
+                background-color: greenyellow;
+                border-top-right-radius: 20px;
+                width: 80%;
+                top: -72px;
+                left:19.5%;
+                  
+            }
+            label {
+                float: left;
+                width: 10em;
+                margin-right: 0.5em;
+            }
+            #form{
+                position: relative;
+                top:-45px;
+                left:0px;
+            }
+            .button
+            {
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              text-align: center;
+              color: #0C5;
+
+              font-size: 24px;
+              font-family: "Nunito", sans-serif;
+              font-weight: 300;
+
+              margin: 5em auto;
+
+              position: absolute; 
+              top:65%; right:0; bottom:0; left:0;
+
+              padding: 0px 0;
+              width: 220px;
+              height:30px;
+
+              background: #0D6;
+              border: 1px solid #0D6;
+              color: #FFF;
+              overflow: hidden;
+
+              transition: all 0.5s;
+            }
+
+            .button:hover, .button:active 
+            {
+              text-decoration: none;
+              color: #0C5;
+              border-color: #0C5;
+              background: #FFF;
+            }
+
+            .button span 
+            {
+              display: inline-block;
+              position: relative;
+              padding-right: 0;
+
+              transition: padding-right 0.5s;
+            }
+
+            .button span:after 
+            {
+              content: ' ';  
+              position: absolute;
+              top: 0;
+              right: -18px;
+              opacity: 0;
+              width: 10px;
+              height: 10px;
+              margin-top: -10px;
+
+              background: rgba(0, 0, 0, 0);
+              border: 3px solid #FFF;
+              border-top: none;
+              border-right: none;
+
+              transition: opacity 0.5s, top 0.5s, right 0.5s;
+              transform: rotate(-45deg);
+            }
+
+            .button:hover span, .button:active span 
+            {
+              padding-right: 30px;
+            }
+
+            .button:hover span:after, .button:active span:after 
+            {
+              transition: opacity 0.5s, top 0.5s, right 0.5s;
+              opacity: 1;
+              border-color: #0C5;
+              right: 0;
+              top: 50%;
+            }
+        </style>
+    </h:head>
+    
+    <h:body>
+        
+        <div id="arkaplan">
+            <div id="konum">
+                <div id="anasayfa">
+                    <h:form>
+                    <h:commandLink action="#{aboneli.anasayfa()}">
+                    <h:graphicImage value="pics/7.png" />
+                    </h:commandLink>
+                    </h:form>
+                </div>
+                <div id="tanim">
+                    <h2>Abonelik Oluşturma</h2>
+                </div>
+                <div id="form">
+                    <h:form>
+                        
+                    <h:outputLabel for="subno" value="Abone Numarası :" /> 
+                    <label  style="position:absolute; color:dodgerblue ">#{aboneli.aliş()}</label>
+                    <h:message for="subno"></h:message>
+                    
+                    <br/>
+                    <br/> 
+                    
+                    <h:outputLabel value="Tc kimlik no"></h:outputLabel>
+                    <h:inputText id="tc" value="#{aboneli.tc}" required="true" validatorMessage="11 haneli olarak giriniz" requiredMessage="Tc kimlik gerekiyor">
+                        <f:validateLength minimum="11" maximum="11"/>
+                    </h:inputText>
+                    <h:message for="tc"></h:message>
+                    
+                    <br/>
+                    <br/> 
+                    
+                    <h:outputLabel value="Ad :"></h:outputLabel>
+                    <h:inputText id="name" value="#{aboneli.name}" required="true" requiredMessage="İsim gerekiyor"> 
+                        
+                    </h:inputText>
+                    <h:message for="name"></h:message>
+                    
+                    <br/> 
+                    <br/> 
+                    
+                    <h:outputLabel for="surname" value="Soyad :"/> 
+                    <h:inputText id="surname" value="#{aboneli.surname}" required="true"  requiredMessage="Soyad gerekiyor ">
+                        
+                    </h:inputText>
+                    <h:message for="surname"></h:message>
+                    
+                    <br/> 
+                    <br/> 
+                    
+                    <h:outputLabel for="adress" value="Adres :"/> 
+                    <h:inputText id="adress" value="#{aboneli.adress}" required="true"  requiredMessage="adres gerekiyor">
+                        
+                    </h:inputText>
+                    <h:message for="adress"></h:message>
+                    <br/>
+                    
+                    <br/> 
+                    
+                    <h:outputLabel for="phone" value="Numara :"/> 
+                    <h:inputText id="phone" value="#{aboneli.phone}" required="true" validatorMessage="11 haneli olarak giriniz" requiredMessage="Numara gerekiyor">
+                        <f:validateLength minimum="11" maximum="11"/>
+                    </h:inputText>
+                    <h:message for="phone"></h:message>
+                    
+                    <br/> 
+                    
+                    <br/> 
+                    <h:outputLabel for="mail" value="Mail :"/>
+                    <h:inputText id="mail" value="#{aboneli.mail}" required="true"  requiredMessage="mail gerekiyor">
+                      
+                    </h:inputText>
+                    <h:message for="mail"></h:message>
+                    
+                    <br/> 
+                    <br/> 
+                    <h:outputLabel for="taahut" value="Taahüt belileyiniz : "/> 
+                    <h:selectOneMenu value = "#{aboneli.taahut}"> 
+                        <f:selectItem itemValue = "6" itemLabel = "6 ay" /> 
+                        <f:selectItem itemValue = "12" itemLabel = "12 ay" />
+                        <f:selectItem itemValue = "24" itemLabel = "24 ay" /> 
+                    </h:selectOneMenu>
+                    <br/>
+                    <br/> 
+                    <h:commandButton value="Abone Ol" action="#{aboneli.aboneolma()}" class="button" />
+                    <label  style="position:absolute; top:-15px; left:350px; color:dodgerblue ">#{aboneli.gecti}</label>
+                </h:form>
+                    
+                </div>
+                </div>
+       </div>
+            
+    </h:body>
+</html>
+            

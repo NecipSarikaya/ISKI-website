@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>ALTYAPI</title>
+        <h:outputStylesheet library = "css" name = "sayfaj.css"/> 
+        <style type="text/css">
+        
+	.lis{
+                padding: 2% 2% 2% 4%;
+                border-radius: 3px;
+            }
+            .tx1{
+               color: #1a53ff;
+            }
+            body{background-image: url(pics/a.jpg);
+                background-size: cover;
+            }
+        </style> 
+    </h:head>
+    <h:body>
+        <div>
+            <table align="center" width ="92%">
+                <tr>
+                    <th class="bol"><h:form><h:commandButton action = "main" image="pics/home.png" style="  background-color:#bfbfbf;width:100%;height:100%;display:block;" /></h:form></th>
+                    <th>Alt Yapılar</th>
+                </tr>   
+            </table>
+            <h:form class="for" style="margin-top:4%;">
+                <br/>
+                <strong><h:outputText value="Seçilen Altyapıyı Sorgula" /></strong><br/>
+            <h:selectOneMenu value ="#{altyapij.istenen}" class="lis">
+                <f:selectItems value ="#{altyapij.liste()}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Sorgula" action ="#{altyapij.listeyial()}" class="btn" style="margin-left:50px;"/>
+            <br/>
+            <br/>
+        <strong><h:outputText value="İlçe:" class="tx1" rendered="#{altyapij.ac}"/></strong>
+        <strong><h:outputText value="Var Mı:" class="tx1" rendered="#{altyapij.ac}" style="margin-left:16%;"/></strong>
+        <strong><h:outputText value="Çalışıyor Mu:" class="tx1" rendered="#{altyapij.ac}" style="margin-left:10%;"/></strong><br/>
+            <h:outputText value="#{altyapij.istenen}" style="position: absolute; left:4%;"/>
+            <h:outputText value="#{altyapij.varmis}" style="position: absolute; left:39%;"/>
+            <h:outputText value="#{altyapij.calisiyormus}" style="position: absolute; left:68%"/><br/>
+            </h:form> 
+            <h:form class="for">
+        <br/>
+        <h:commandButton action = "#{baraj.yon5()}" value = "Tüm Altyapıları Gör" class="btn" style="margin-left:15%; margin-top:10%;"/>
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

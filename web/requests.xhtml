@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library = "css" name = "style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></link>
+        <style>
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+/* Style the buttons inside the tab */
+.buttontab {
+ background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
+/* Change background color of buttons on hover */
+.buttontab:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.buttontab.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  text-align: center;
+}
+.makereq i{
+  left: 0%;
+  top: 10px;
+  padding: 9px 8px;
+  color: #4CAF50;
+  transition: 0.3s;
+}
+</style>
+    </h:head>
+    <h:body>
+        <div class="center">
+<div class="tab">
+    <h:form>
+        <h:commandButton value="Talep Sorgula" type="button" styleClass="buttontab" onclick="Tabchanger('makereq');" />
+        <h:commandButton value="Talep Oluştur" type="button" styleClass="buttontab" onclick="Tabchanger('queryreq');" />
+        </h:form>
+</div>
+
+<div id="makereq" class="tabcontent">
+  <h:form class="centerx" id="form">
+      <label for="makereqlb" style="color:black" >Abone Numarasını Girin</label>
+            <h:inputText value="#{query.subno}" styleClass="text-input" pt:placeholder="Abone Numarası" required="true" />
+              <h:commandButton value="Sorgula" action="#{query.findreqpage}" actionListener="#{query.findreq}" ></h:commandButton>
+        </h:form>
+    <label for="lastname">#{query.hata}</label>
+</div>
+
+<div id="queryreq" class="tabcontent">
+    <h:form>
+        <label for="makereqlb" style="color:black" >Abone Numarasını Girin</label>
+        <h:selectOneMenu value="#{query.subnoreq}">
+            <f:selectItems value="#{query.sublistValue}" var="c"
+   			itemLabel="#{c.subno}" itemValue="#{c.subno}" />
+   		</h:selectOneMenu>
+        <br></br>
+        <h:selectOneMenu value="#{query.request}">
+   	<f:selectItem itemValue="saatariza" itemLabel="Abone Saat Arıza" />
+        <f:selectItem itemValue="sebekeariza" itemLabel="Şebeke Arıza" />
+        </h:selectOneMenu>
+        <br></br>
+        <h:commandButton value="Talep Oluştur" action="#{query.makereqpage}" actionListener="#{query.makereq}" ></h:commandButton>
+    </h:form>
+    <label for="lastname">#{query.hata}</label>
+</div>
+</div>
+<script>
+function Tabchanger(sec) {
+    var sec;
+    if(sec=='makereq'){
+        document.getElementById(sec).style.display = "block";
+        document.getElementById('queryreq').style.display = "none";
+    }
+    else {
+        document.getElementById(sec).style.display = "block";
+        document.getElementById('makereq').style.display = "none";
+    }
+  
+}
+</script>
+    </h:body>
+    
+</html>

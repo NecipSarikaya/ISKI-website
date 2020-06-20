@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>İski Yönetim Paneli</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></link>
+        <style>
+            .sidenav {
+                height: 100%;
+                width: 250px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 14px;
+                border-radius: 2px;
+            }
+            .sidelinks{
+                padding: 12px 8px 8px 20px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                transition: 0.3s; 
+            }
+            .sidelinks:hover{
+                color: #f1f1f1;
+            }
+            .sidenav .closebtn:hover{
+                color: #f1f1f1;
+            }
+            .sidenav .closebtn {
+                 padding: 12px 8px 8px 20px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                transition: 0.3s; 
+                position: absolute;
+                top: 0;
+                right: 8px;
+                font-size: 26px;
+                margin-left: 10px;
+                color:#818181;
+            }
+            .openbtn{
+                color: black;
+            }
+            .sideopener{
+                height: 100%;
+                width: 250px;
+                position: fixed;
+            }
+            
+            .usernav label {
+                padding: 0px 0px 0px 0px;
+                text-decoration: none;
+                font-size: 20px;
+                display: block;
+                transition: 0.3s;
+            }
+            
+            .useropener{
+                height: 20px;
+                float:right;                
+            }
+            
+            .usernav {
+                position: relative;
+                height: 0px;
+                width: 0px;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                float:right;
+                background-color: #02F7EA;
+                overflow-x: hidden;
+                overflow-y: hidden;
+                transition: 0.5s;
+                padding-top: 14px;
+                border-radius: 20px;
+            }
+            .outinput {
+                padding: 0px 0px 0px 0px;
+                text-decoration: none;
+                font-size: 20px;
+                display: block;
+                transition: 0.3s;
+                text-align: center;
+            }
+            .outinput:hover {
+                color: #f1f1f1;
+            }
+            .sag11{
+                height: 30px;
+                line-height: 0px;
+                text-align: center;
+                font-size: 50px;
+                font-weight: 800;
+            }
+            .sag12{
+                height: 30px;
+                line-height: 0px;
+                text-align: center;
+                font-size: 50px;
+                font-weight: 800;
+            }
+
+            .up1 i {
+                margin: 100px 0px 50px 0px;
+                font-size: 150px;
+                text-align:center;
+                
+            }
+            .dw1 i {
+                font-size: 150px;
+            }
+            .dw2 i {
+                font-size: 150px;
+            }
+
+            @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 15px;}
+                .sidenav a {font-size: 18px;}
+            }
+             @media screen and (max-height: 250px) {
+                .usernav {padding-top: 15px;}
+                .usernav a {font-size: 18px;}
+            }
+            .circle-wrap {
+  margin: 80px auto 35px 0px;
+  width: 150px;
+  height: 150px;
+  background: #e6e2e7;
+  border-radius: 50%;
+}
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+.circle-wrap .circle .mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #0485fb;
+}
+.circle-wrap .circle .mask.full,
+.circle-wrap .circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(126deg);
+}
+ 
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(126deg);
+  }
+}
+label {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    text-align: center;
+    padding:5px;
+    margin: 20px auto;
+}   
+.grid-container {
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-template-rows: 350px 350px;
+  gap: 1px 1px;
+  grid-template-areas: "up1 up2" "dw1 dw2";
+  justify-items: center;
+  max-width: 500px;
+  margin: auto;
+}
+
+.up1 { grid-area: up1; }
+
+.up2 { grid-area: up2; }
+
+.dw1 { 
+    grid-area: dw1;
+    padding: 40px;
+}
+
+.dw2 { grid-area: dw2;padding: 40px; 
+
+
+        </style>
+    </h:head>
+    <h:body>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+            <h:form>
+            <h:commandLink value = "Abone Sorgula" styleClass="sidelinks" action = "#{aboneli.abonesorgusay}" /> <!-- Necip -->
+            <h:commandLink value = "Abone Oluştur" styleClass="sidelinks" action = "#{aboneli.aboneolsayfa}" /> <!-- Necip -->
+            <h:commandLink value = "Abone Borç Sorgula" styleClass="sidelinks" action = "#{aboneli.borcsorgusay}" /> <!-- Necip -->
+            <h:commandLink value = "Abone Geçmiş Ödemeler Sorgula" styleClass="sidelinks" action = "#{query.pastpayquery}" /> <!-- Orkun -->
+            <h:commandLink value = "Ayrıcalık Tanımla" styleClass="sidelinks" action = "#{baraj.yon2}" /> <!-- Yavuz -->
+            <h:commandLink value = "Abone Kullanım Sorgula" styleClass="sidelinks" action = "#{aboneli.kullanimsorgusay}" /> <!-- necip -->
+            <h:commandLink value = "Cezai İşlem Uygula" styleClass="sidelinks" action = "#{query.penaltypage}" /> <!-- orkun -->
+            <h:commandLink value = "Talep İşlemleri" styleClass="sidelinks" action = "#{query.reqquerypageopener}" />  <!-- orkun -->
+            <h:commandLink value = "Kullanım Bilgisi Gir" styleClass="sidelinks" action = "#{baraj.yon3}" /> <!-- yavuz -->
+            <h:commandLink value = "Baraj Doluluk Oranları" styleClass="sidelinks" action = "#{baraj.yon4}" /> <!-- yavuz -->
+            <h:commandLink value = "Alt Yapı Sorgulama" styleClass="sidelinks" action = "#{baraj.yon1}" /> <!-- yavuz -->
+            </h:form>
+        </div>
+        <div class="sideopener"><span style="font-size:30px;cursor:pointer" class="openbtn" onclick="openNav()">&#9776;</span>
+        </div>
+        
+        <div id="myUsernav" class="usernav">
+            
+            <label for="name" style="text-transform: capitalize">#{user.name} #{user.surname}</label>
+            <label for="sn">Hoşgeldiniz</label>
+            <h:form>
+            <h:commandLink value = "Çıkış" styleClass="outinput" action = "#{user.exit}" />
+            </h:form>
+        </div>
+            <div class="useropener"><span style="font-size:30px;cursor:pointer" class="openuserbtn" onclick="opencloseuserNav()"><i class="fa fa-user-circle fa-lg fa-fw" aria-hidden="true"></i></span>
+        </div>
+        
+        <div class="grid-container">
+  <div class="up1">
+      <i class="fa fa-users fa-lg fa-fw" aria-hidden="true"></i>
+                <div class="sag11" id="value"></div>
+                <label for="tpab">Toplam Abone Sayısı</label>
+  </div>
+  <div class="up2"> <div class="circle-wrap">
+  <div class="circle">
+    
+    <div class="mask full">
+      <div class="fill"></div>
+    </div>
+   
+    <div class="mask half">
+      <div class="fill"></div>
+    </div>
+    
+  </div>
+      </div>
+                <div class="sag12" id="value2"></div>
+                <label for="brj">Baraj Doluluk Oranı</label>
+  </div>
+            <div class="dw1"><label for="brmfy" style="font-size: 75px;color:dodgerblue;font-weight: 500">0,17</label>
+                <label for="brm">Birim Fiyat</label></div>
+  <div class="dw2"><label for="artlms" style="font-size: 75px;color:dodgerblue;font-weight: 500">20000 L</label>
+                <label for="art">Arıtılmış Su Miktarı</label></div>
+            
+</div>
+        
+        
+
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+            function opencloseuserNav() {
+                var cont = document.getElementById("myUsernav").offsetWidth;
+                if(cont == 0){
+                    document.getElementById("myUsernav").style.width = "250px";
+                document.getElementById("myUsernav").style.height = "140px";
+                document.getElementById("myUsernav").style.backgroundColor = "#02F7EA";
+                }
+                else{
+                    document.getElementById("myUsernav").style.height = "0";
+                document.getElementById("myUsernav").style.width = "0";
+                }
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+
+            function animateValue(id, start, end, duration) {
+                var range = end - start;
+                var current = start;
+                var increment = end > start ? 1 : -1;
+                var stepTime = Math.abs(Math.floor(duration / range));
+                var obj = document.getElementById(id);
+                var timer = setInterval(function () {
+                    current += increment;
+                    obj.innerHTML = current;
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            animateValue("value", 144000, 144444, 0.000000000000000000000000000000000000001);
+            animateValue("value2", 0, 65, 3000);
+            
+            
+            
+        </script>
+    </h:body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>İski Yönetim Paneli</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library = "css" name = "style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></link>
+    </h:head>
+    <h:body>
+        <div class="centercez">
+            <h:dataTable value="#{query.yaziListesi}" var="o"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+                        
+                <f:facet name="header"><h:form>
+                    <h:commandLink action="main" style="font-size: 50px;float:left;" styleClass="fa fa-home fa-lg fa-fw"></h:commandLink></h:form><label for="cezabaslik" style="text-align: center;color: #0a6ac9;font-size: 20px">Geçmiş Ödemele Listesi</label></f:facet>
+    			<h:column>
+    				<f:facet name="header" >Abone No</f:facet>
+    				#{o.subno}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">Kullanım Miktarı</f:facet>
+    				#{o.usage}
+    			</h:column>
+                        <!--<h:column>
+    				<f:facet name="header">Fatura Kesim Tarihi</f:facet>
+    				#{o.yazar}
+    			</h:column> 
+                        <h:column>
+    				<f:facet name="header">Ödeme Tarihi</f:facet>
+    				#{o.yazar}
+    			</h:column> -->
+                        <h:column>
+    				<f:facet name="header">Tutar</f:facet>
+    				#{o.price}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">Ödeme Yöntemi</f:facet>
+    				#{o.method}
+    			</h:column>
+    		
+    		</h:dataTable>
+            </div>
+    </h:body>
+</html>
